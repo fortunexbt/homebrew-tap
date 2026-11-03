@@ -4,17 +4,17 @@ cask "bollard" do
 
   url "https://github.com/fortunexbt/bollard/releases/download/v#{version}/Bollard-#{version}.dmg"
   name "Bollard"
-  desc "Every server on your Mac, in the menu bar, with a Stop button that works"
+  desc "Menu bar control panel for every local server, with a Stop button that works"
   homepage "https://github.com/fortunexbt/bollard"
 
-  depends_on macos: ">= :sonoma"
+  depends_on macos: :sonoma
 
   app "Bollard.app"
   binary "#{appdir}/Bollard.app/Contents/MacOS/Bollard", target: "bollard"
 
-  postflight do
+  postflight_steps do
     # Ad-hoc signed: clear the quarantine flag so Gatekeeper lets it open.
-    system_command "/usr/bin/xattr", args: ["-dr", "com.apple.quarantine", "#{appdir}/Bollard.app"], sudo: false
+    run "/usr/bin/xattr", args: ["-dr", "com.apple.quarantine", "{{appdir}}/Bollard.app"]
   end
 
   uninstall quit: "com.fortunexbt.bollard"
