@@ -1,21 +1,17 @@
 cask "bollard" do
-  version "2.1.0"
-  sha256 "3723f7ad4fda5baf470b599b8aa5559019e252d29aa533098ed199c3b24f3d47"
+  version "3.0.0"
+  sha256 "20f5f0428cdab6be213e6d0bfd9cf3fdc5c17a63885f8fe94e8e261b01870cad"
 
   url "https://github.com/fortunexbt/bollard/releases/download/v#{version}/Bollard-#{version}.dmg"
   name "Bollard"
-  desc "Menu bar control panel for every local server, with a Stop button that works"
+  desc "Menu bar panel for every server, script and agent you left running"
   homepage "https://github.com/fortunexbt/bollard"
 
-  depends_on macos: :sonoma
+  depends_on macos: ">= :tahoe"
+  depends_on arch: :arm64
 
   app "Bollard.app"
   binary "#{appdir}/Bollard.app/Contents/MacOS/Bollard", target: "bollard"
-
-  postflight_steps do
-    # Ad-hoc signed: clear the quarantine flag so Gatekeeper lets it open.
-    run "/usr/bin/xattr", args: ["-dr", "com.apple.quarantine", "{{appdir}}/Bollard.app"]
-  end
 
   uninstall quit: "com.fortunexbt.bollard"
 
