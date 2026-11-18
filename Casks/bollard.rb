@@ -7,8 +7,8 @@ cask "bollard" do
   desc "Menu bar panel for every server, script and agent you left running"
   homepage "https://github.com/fortunexbt/bollard"
 
-  depends_on macos: ">= :tahoe"
   depends_on arch: :arm64
+  depends_on macos: :tahoe
 
   app "Bollard.app"
   binary "#{appdir}/Bollard.app/Contents/MacOS/Bollard", target: "bollard"
