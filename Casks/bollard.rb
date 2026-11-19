@@ -1,6 +1,6 @@
 cask "bollard" do
-  version "3.0.1"
-  sha256 "0a53b2a436f5b1c80d2df298b249e83a3e21ce5c6dec11926fba70237efd5471"
+  version "3.0.2"
+  sha256 "32ce8a6d70eff4ec10269e3bd5f0a0753d6f197778b436e8f066a8ab13bf8fd4"
 
   url "https://github.com/fortunexbt/bollard/releases/download/v#{version}/Bollard-#{version}.dmg"
   name "Bollard"
